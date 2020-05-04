@@ -25,13 +25,32 @@ type Numeric = number | boolean;
 type Universal = Combinable & Numeric;
 // Intersection could be used with any types
 
-const add = (a: Combinable, b: Combinable) => {
+// Function overloads - different parameter and different return types
+function add(a: number, b: number): number;
+function add(a: string, b: string): string;
+function add(a: Combinable, b: Combinable) {
   // Type Guard - we either concatenate strings or add mathematically
   if (typeof a === 'string' || typeof b === 'string') {
       return a.toString() + b.toString();
   }
   return a + b;
+}
+
+const result = add('Max', 'Schwarz');
+
+// Optional chaining
+const fetchUserData = {
+    id: 'u1',
+    name: 'Max',
+    job: {title: 'CEO', description: 'My own company'}
 };
+
+console.log(fetchUserData?.job?.title);
+
+// Nullish Coalescing
+const userInput = '';
+// ?? - if this is null or undefined
+const storedData = userInput ?? 'DEFAULT';
 
 type UnknownEmployee = Employee | Admin;
 const printEmployeeInformation = (emp: UnknownEmployee) => {
@@ -104,3 +123,22 @@ const moveAnimal = (animal: Animal) => {
 };
 
 moveAnimal({type: 'bird', flyingSpeed: 10});
+
+
+//const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
+const userInputElement = document.getElementById('user-input');
+if (userInputElement) {
+    (userInputElement as HTMLInputElement).value = 'Hi there!';
+}
+
+// We don't know which properties we are going to use or how many of them we need
+// We only define that their keys and values should be strings
+interface ErrorContainer { // { email: 'Not a valid email', username: 'Must start with a character' }
+    [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+    email: 'Not a valid email',
+    username: 'Must start with a capital character!'
+};
+

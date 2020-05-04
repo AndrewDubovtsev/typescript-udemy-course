@@ -9,6 +9,7 @@
 //     hobbies: ['Sports', 'Cooking'],
 //     role: [2, 'author']
 // };
+
 enum Role {
     ADMIN,
     READ_ONLY,
