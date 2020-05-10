@@ -18,7 +18,7 @@ export class ProjectList extends Component<HTMLDivElement, HTMLElement> implemen
     }
 
     @autobind
-    // When you enter a draggable aread
+    // When you enter a draggable area
     dragOverHandler(event: DragEvent): void {
         // Only allowing dropping of plain text elements
         if (event.dataTransfer && event.dataTransfer.types[0] === 'text/plain') {
