@@ -10,12 +10,57 @@
 //     data.split(' ');
 // });
 
+// for number type
+function fun(args: number): number {
+    return args;
+}
+
+// for string type
+function fun(args: string): string {
+    return args;
+}
+
+// for any type
+function fun(args: any): any {
+    return args;
+}
+
+function fun<T>(args:T):T {
+    return args;
+}
+
+// for string
+const resultString = fun<string>("Hello World");
+
+// for number
+const resultNumber = fun<number>(200);
+
+function identities<T, U> (arg1: T, arg2: U): [T, U] {
+    return [arg1, arg2];
+}
+
 function merge<T extends object, U extends object>(objA: T, objB: U) {
   return Object.assign(objA, objB);
 }
 
 const mergeObj = merge({name: 'Max', hobbies: ['Sports']}, {age: 30});;
 console.log(mergeObj.age);
+
+// function identity<T>(arg: T): T {
+//     console.log(arg.length);
+//     return arg;
+// }
+
+interface Length {
+    length: number;
+}
+
+function identity<T extends Length>(arg: T): T {
+    // length property can now be called
+    console.log(arg.length);
+    return arg;
+}
+
 
 interface  Lengthy {
     length: number;

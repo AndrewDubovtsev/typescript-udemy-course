@@ -29,7 +29,6 @@ class Project {
 }
 
 
-
 // Project State Management (a Singleton)
 type Listener<T> = (items: T[]) => void;
 

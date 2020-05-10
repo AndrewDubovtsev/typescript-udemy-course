@@ -12,6 +12,22 @@ function Logger(logString: string) {
     }
 }
 
+function smithFamily(constructor: Function) {
+    return class extends constructor {
+        lastName = "Smith"
+    }
+}
+
+@smithFamily
+class Person {
+    firstName: string;
+    constructor(m: string) {
+        this.firstName = m;
+    }
+}
+
+console.log(new Person("John"));
+
 
 // A decorator factory for a class decorator
 // function WithTemplate(template: string, hookId: string) {
@@ -53,16 +69,16 @@ function WithTemplate(template: string, hookId: string) {
 // Actual decorators - not decorator factories
 @Logger('LOGGING')
 @WithTemplate('<h1>My Person Object</h1>', 'app')
-class Person {
-    name = 'Max';
-
-    constructor() {
-        console.log('Creating person object...');
-    }
-}
-
-const person = new Person();
-console.log(person);
+// class Person {
+//     name = 'Max';
+//
+//     constructor() {
+//         console.log('Creating person object...');
+//     }
+// }
+//
+// const person = new Person();
+// console.log(person);
 
 // ---
 // Decorators get parameters depending on where you want to attach them to
