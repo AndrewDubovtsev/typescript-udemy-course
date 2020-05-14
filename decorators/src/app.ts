@@ -12,23 +12,6 @@ function Logger(logString: string) {
     }
 }
 
-function smithFamily(constructor: Function) {
-    return class extends constructor {
-        lastName = "Smith"
-    }
-}
-
-@smithFamily
-class Person {
-    firstName: string;
-    constructor(m: string) {
-        this.firstName = m;
-    }
-}
-
-console.log(new Person("John"));
-
-
 // A decorator factory for a class decorator
 // function WithTemplate(template: string, hookId: string) {
 //     return function(constructor: any) {
